@@ -41,7 +41,7 @@ export default function Player(props) {
           <input type="text" value={playerName} onChange={handleChange} />
           // The onChange event is triggered when keystrokes are
           // made in the input field. This is then passed to the handleChange function.
-          //Using value={playerName} ensures that the input field's value is always in sync with the playerName state.
+          // Using value={playerName} ensures that the input field's value is always in sync with the playerName state.
           // This is a controlled component, meaning that the component's value is controlled by React.
           // This is important for form elements in React
           // as it allows you to manage the state of the input field

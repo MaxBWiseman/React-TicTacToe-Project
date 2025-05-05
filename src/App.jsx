@@ -1,9 +1,8 @@
-import Player from './components/Player.jsx'
-
+import FeedbackForm from "./components/FeedbackForm.jsx";
+import Player from "./components/Player.jsx";
 
 function App() {
-  
-
+ 
   return (
     <main>
       <div id="game-container">
@@ -13,9 +12,9 @@ function App() {
         </ol>
         GAME BOARD
       </div>
+      <FeedbackForm />
     </main>
-    
-  )
+  );
 }
 
-export default App
+export default App;
