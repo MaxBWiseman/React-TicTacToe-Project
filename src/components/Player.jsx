@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function Player(props) {
   const [playerName, setPlayerName] = useState(props.name);
