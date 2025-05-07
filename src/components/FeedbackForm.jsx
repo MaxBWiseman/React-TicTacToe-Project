@@ -64,15 +64,21 @@ export default function FeedbackForm() {
           <input name="student" type="text" onChange={handleFeedback} />
         </p>
       </section>
-      <section id="draft">
-        <h2>Your feedback</h2>
+      {formData.feedback && formData.student && (
+        <section id="draft">
+          <h2>Your feedback</h2>
 
-        <Review feedback={formData.feedback} student={formData.student} />
+          <Review feedback={formData.feedback} student={formData.student} />
 
-        <p>
-          <button>Save</button>
-        </p>
-      </section>
+          <p>
+            <button>Save</button>
+          </p>
+        </section>
+      ) // This section with id="draft" will only be displayed
+        // when both formData.feedback and formData.student have values.
+        // This is a common pattern in React for conditionally rendering components
+        // with the && operator.
+      }
     </>
   );
 }
