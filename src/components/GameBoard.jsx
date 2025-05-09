@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "react";
 
 const initialGameBoard = [
   [null, null, null],
@@ -10,8 +11,9 @@ const initialGameBoard = [
 // The initial state of the game board is set to all null values.
 // This means that the game board is empty at the start of the game.
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
+
   function handleMove(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
       // Remeber when updating state with a function, that react will
@@ -23,6 +25,9 @@ export default function GameBoard() {
         // 1 . The current element being processed.
         // 2 . The index of the current element. In this case, it is used to
         // create a new game board with the updated cell value (X or O).
+        // React works with the concept of immutability, meaning that it does not
+        // modify the original array but creates a new one with the updated values.
+        // This is important for React to detect changes and re-render the component.
         // row: Represents the current row being processed in the gameBoard array.
         // Each row is itself an array of cells (e.g., [null, null, null]).
         // rIdx (Row Index):
@@ -37,11 +42,12 @@ export default function GameBoard() {
           // the cell to 'X'. Otherwise, it keeps the original cell value.
           // This ensures that the game board is updated correctly
           // when a player makes a move.
-          rIdx === rowIndex && cIdx === colIndex && cell === null ? "X" : cell
+          rIdx === rowIndex && cIdx === colIndex && cell === null ? activePlayerSymbol : cell
         )
       );
       return updatedGameBoard;
     });
+    onSelectSquare();
   }
   return (
     <ol id="game-board">
